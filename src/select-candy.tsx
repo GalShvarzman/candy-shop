@@ -2,10 +2,10 @@ import * as React from 'react';
 import './select-candy.css';
 
 interface ISelectCandyProps {
-    onSelect(number:string):void
+    onSelect(number:string):void,
+    message:string,
+    errorMsg:string
 }
-
-
 
 class SelectCandy extends React.PureComponent<ISelectCandyProps>{
     public input:any;
@@ -15,24 +15,25 @@ class SelectCandy extends React.PureComponent<ISelectCandyProps>{
 
     }
 
-    buttonClicked = (event:React.MouseEvent<HTMLTableElement>)=>{
+    numberButtonClicked = (event:React.MouseEvent<HTMLTableElement>)=>{
         event.stopPropagation();
         if((event.target as HTMLElement).tagName === "SPAN"){
             this.input.current.value += (event.target as HTMLElement).innerHTML;
         }
-    }
+    };
 
     onSubmit = () => {
         this.props.onSelect(this.input.current.value);
+        this.input.current.value = "";
     };
 
     render(){
         return(
             <div className="table-wrapper">
-                <table onClick={this.buttonClicked} className="select-candy-table">
+                <table onClick={this.numberButtonClicked} className="select-candy-table">
                     <tbody>
                         <tr>
-                            <th colSpan={3}><input ref={this.input} type="text"/></th>
+                            <th colSpan={3}><input ref={this.input} type="number"/></th>
                         </tr>
                         <tr>
                             <td><span>1</span></td>
@@ -50,13 +51,17 @@ class SelectCandy extends React.PureComponent<ISelectCandyProps>{
                             <td><span>9</span></td>
                         </tr>
                         <tr>
+                            <td colSpan={3}><span>0</span></td>
+                        </tr>
+                        <tr>
                             <td colSpan={3}>
-                                <button onClick={this.onSubmit}>Submit</button>
+                                <button className="buy-button" onClick={this.onSubmit}>Buy</button>
                             </td>
                         </tr>
 
                     </tbody>
                 </table>
+                <p className="message">{this.props.message || this.props.errorMsg}</p>
             </div>
         )
     }

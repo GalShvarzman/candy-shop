@@ -5,6 +5,13 @@ export function setCandies(state:any, action:any){
     }
 }
 
+export function setErrorMsg(state:any, action:any){
+    return{
+        ...state,
+        errorMsg:action.errorMsg
+    }
+}
+
 export function setCandiesAfterSelect(state:any, action:any){
     const updatedCandy = action.updatedCandy;
     const candiesClone = [...state.candies];
@@ -15,7 +22,7 @@ export function setCandiesAfterSelect(state:any, action:any){
         candiesClone[candyIndex] = updatedCandy;
         return{
             ...state,
-            candiesClone
+            candies : candiesClone
         }
     }
 }

@@ -4,7 +4,7 @@ export const candiesRouter = express.Router();
 
 candiesRouter.get('/',(req:express.Request,res:express.Response)=>{
     Candy.find()
-        .then((candies)=>{
+        .then((candies:any)=>{
             res.json(candies);
         })
         .catch((err:Error)=>{
@@ -14,8 +14,8 @@ candiesRouter.get('/',(req:express.Request,res:express.Response)=>{
 
 candiesRouter.get('/:candyName',(req:express.Request,res:express.Response)=>{
     Candy.findOne({candyName:req.params.candyName})
-        .then((data)=>{
-            res.json(data);
+        .then((candy:any)=>{
+            res.json(candy);
         })
         .catch((err:Error)=>{
             res.status(500).send(err);
@@ -35,7 +35,7 @@ candiesRouter.post('/',(req:express.Request,res:express.Response)=>{
 
 candiesRouter.patch('/:candyName',(req:express.Request,res:express.Response)=>{
     Candy.findOne({candyName:req.params.candyName})
-        .then((candy)=>{
+        .then((candy:any)=>{
             candy.countInStock--;
             candy.save()
                 .then(()=>{
@@ -49,7 +49,7 @@ candiesRouter.patch('/:candyName',(req:express.Request,res:express.Response)=>{
 
 candiesRouter.delete('/:candyName',(req:express.Request,res:express.Response)=>{
     Candy.deleteOne({ candyName: req.params.candyName})
-        .then((data)=>{
+        .then((data:any)=>{
             res.json(data._doc);
         });
 });

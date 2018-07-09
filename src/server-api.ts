@@ -10,7 +10,10 @@ export async function updateSelectedCandy(candyName:string){
 
 async function get(url:string){
     return fetch(url).then(async function(response) {
-        return await response.json();
+        if(response.status >= 200 && response.status < 300) {
+            return await response.json();
+        }
+        throw new Error("Failed to fetch");
     })
 }
 
@@ -20,6 +23,9 @@ async function patch(url:string){
         method: "PATCH",
     })
     .then(async function(response) {
-        return await response.json();
+        if(response.status >= 200 && response.status < 300){
+            return await response.json();
+        }
+        throw new Error("Failed to fetch");
     })
 }

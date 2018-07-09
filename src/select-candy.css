@@ -1,9 +1,50 @@
 .select-candy-table{
     border-collapse: collapse;
     border:1px solid black;
+    cursor: pointer;
+    user-select: none;
+}
+
+.select-candy-table span{
+    padding:1em;
+    color: #4f0a42;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.select-candy-table button{
+    cursor: pointer;
 }
 
 .select-candy-table td{
-    padding:0.5em;
+    padding:1em;
     font-size:1em;
+}
+
+.select-candy-table th{
+    padding: 1em;
+}
+
+.select-candy-table th input{
+    outline: none;
+    font-size:1em;
+}
+
+.table-wrapper{
+    text-align: center;
+}
+
+.message{
+    color: #4f0a42;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.buy-button{
+    background-color: azure;
+    font-size: 1.2em;
+    color:purple;
+    font-weight: bold;
+    padding:0.6em 1em;
+    border:1px solid purple;
 }

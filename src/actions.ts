@@ -8,7 +8,7 @@ export function loadAllCandies():any{
             dispatch(setCandies(candies));
         }
         catch (e) {
-
+            dispatch(setErrorMsg("Load candies failed"))
         }
     }
 }
@@ -17,11 +17,10 @@ export function candySelected(candyName:string):any{
     return async (dispatch:Dispatch) => {
         try{
             const updatedCandy = await updateSelectedCandy(candyName);
-            debugger;
             dispatch(setCandiesAfterSelect(updatedCandy));
         }
         catch (e) {
-
+            dispatch(setErrorMsg("Process failed"))
         }
     }
 }
@@ -30,6 +29,13 @@ function setCandies(candies:{}[]){
     return{
         type: 'SET_CANDIES',
         candies
+    }
+}
+
+function setErrorMsg(errorMsg:string){
+    return{
+        type:'SET_ERROR_MSG',
+        errorMsg
     }
 }
 

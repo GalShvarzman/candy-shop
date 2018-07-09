@@ -14,9 +14,10 @@ class Candies extends React.PureComponent<ICandiesProps>{
         const list = this.props.candies.map((candy, idx)=>{
             return (
                 <div className="candy" key={idx}>
+                    <div className="select-number">{idx+1}</div>
                     <div>{candy.candyName}</div>
-                    <div>price : {candy.price}$</div>
-                    <div>{idx+1}</div>
+                    <div>Price : {candy.price}$</div>
+                    <div className={candy.countInStock === 0 ? "out-of-stock" : ""}>In stock : {candy.countInStock}</div>
                 </div>
             )
         });
