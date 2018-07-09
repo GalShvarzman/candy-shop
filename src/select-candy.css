@@ -1,0 +1,9 @@
+.select-candy-table{
+    border-collapse: collapse;
+    border:1px solid black;
+}
+
+.select-candy-table td{
+    padding:0.5em;
+    font-size:1em;
+}

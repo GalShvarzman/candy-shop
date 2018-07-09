@@ -1,22 +1,48 @@
 import * as React from 'react';
 import './App.css';
+import { connect } from 'react-redux';
+import SelectCandy from "./select-candy";
+import Candies from "./candies";
 
-import logo from './logo.svg';
+interface IAppProps {
+    candies:any[],
+    onSelect(name:string):void
+}
 
-class App extends React.Component {
+class App extends React.PureComponent <IAppProps, {}>{
+  constructor(props:IAppProps){
+    super(props);
+  }
+
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <div>
+            <SelectCandy/>
+            <Candies/>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state:any, ownProps:any) => {
+    return {
+        candies: state.candies,
+    }
+};
+
+const mapDispatchToProps = (dispatch:any, ownProps:any) => {
+    return {
+        onSelect: (name:string) => {
+            //dispatch(addAction(name))
+        }
+    }
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
+
+
