@@ -30,7 +30,7 @@ exports.candiesRouter.patch('/:candyName', function (req, res) {
         .then(function (candy) {
         candy.countInStock--;
         candy.save()
-            .than(function () {
+            .then(function () {
             res.json(candy);
         });
     });

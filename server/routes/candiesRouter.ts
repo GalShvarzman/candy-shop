@@ -4,17 +4,17 @@ export const candiesRouter = express.Router();
 
 candiesRouter.get('/',(req:express.Request,res:express.Response)=>{
     Candy.find()
-        .then(data=>{
+        .then((data:any)=>{
             res.json(data);
         })
-        .catch((err)=>{
+        .catch((err:Error)=>{
             res.status(500).send(err);
         });
 });
 
 candiesRouter.get('/:candyName',(req:express.Request,res:express.Response)=>{
     Candy.findOne({candyName:req.params.candyName})
-        .then((data)=>{
+        .then((data:any)=>{
             res.json(data);
         })
 });
@@ -29,18 +29,18 @@ candiesRouter.post('/',(req:express.Request,res:express.Response)=>{
 
 candiesRouter.patch('/:candyName',(req:express.Request,res:express.Response)=>{
     Candy.findOne({candyName:req.params.candyName})
-        .then((candy)=>{
+        .then((candy:any)=>{
             candy.countInStock--;
             candy.save()
-                .than(()=>{
+                .then(()=>{
                     res.json(candy);
                 })
         })
-})
+});
 
 candiesRouter.delete('/:candyName',(req:express.Request,res:express.Response)=>{
     Candy.deleteOne({ candyName: req.params.candyName})
-        .then((data)=>{
-            res.json(data._doc)
+        .then((data:any)=>{
+            res.json(data._doc);
         });
 });
