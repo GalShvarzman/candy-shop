@@ -35,4 +35,10 @@ exports.candiesRouter.patch('/:candyName', function (req, res) {
         });
     });
 });
+exports.candiesRouter.delete('/:candyName', function (req, res) {
+    Candy_1.Candy.deleteOne({ candyName: req.params.candyName })
+        .then(function (data) {
+        res.json(data._doc);
+    });
+});
 //# sourceMappingURL=candiesRouter.js.map
