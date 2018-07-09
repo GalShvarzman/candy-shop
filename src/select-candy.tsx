@@ -15,14 +15,23 @@ class SelectCandy extends React.PureComponent<ISelectCandyProps>{
 
     }
 
+    buttonClicked = (event:React.MouseEvent<HTMLTableElement>)=>{
+        debugger
+        event.stopPropagation();
+        if((event.target as any).tagName === "TD"){
+            this.input.current.value += (event.target as any).innerHTML;
+        }
+        // this.input.current.value += event.target.value;
+    }
+
     onClick = (event:React.MouseEvent<HTMLButtonElement>) => {
         this.props.onSelect(this.input.current.value);
     };
 
     render(){
         return(
-            <div>
-                <table className="select-candy-table">
+            <div className="table-wrapper">
+                <table onClick={this.buttonClicked} className="select-candy-table">
                     <tbody>
                         <tr>
                             <th colSpan={3}><input ref={this.input} type="text"/></th>
