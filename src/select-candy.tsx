@@ -16,15 +16,13 @@ class SelectCandy extends React.PureComponent<ISelectCandyProps>{
     }
 
     buttonClicked = (event:React.MouseEvent<HTMLTableElement>)=>{
-        debugger
         event.stopPropagation();
-        if((event.target as any).tagName === "TD"){
-            this.input.current.value += (event.target as any).innerHTML;
+        if((event.target as HTMLElement).tagName === "SPAN"){
+            this.input.current.value += (event.target as HTMLElement).innerHTML;
         }
-        // this.input.current.value += event.target.value;
     }
 
-    onClick = (event:React.MouseEvent<HTMLButtonElement>) => {
+    onSubmit = () => {
         this.props.onSelect(this.input.current.value);
     };
 
@@ -37,23 +35,23 @@ class SelectCandy extends React.PureComponent<ISelectCandyProps>{
                             <th colSpan={3}><input ref={this.input} type="text"/></th>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
+                            <td><span>1</span></td>
+                            <td><span>2</span></td>
+                            <td><span>3</span></td>
                         </tr>
                         <tr>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
+                            <td><span>4</span></td>
+                            <td><span>5</span></td>
+                            <td><span>6</span></td>
                         </tr>
                         <tr>
-                            <td>7</td>
-                            <td>8</td>
-                            <td>9</td>
+                            <td><span>7</span></td>
+                            <td><span>8</span></td>
+                            <td><span>9</span></td>
                         </tr>
                         <tr>
                             <td colSpan={3}>
-                                <button onClick={this.onClick}>Submit</button>
+                                <button onClick={this.onSubmit}>Submit</button>
                             </td>
                         </tr>
 
