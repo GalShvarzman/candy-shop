@@ -1,7 +1,8 @@
-const {setCandies} = require ('./functions');
+const {setCandies, setCandiesAfterSelect} = require ('./functions');
 
 const options = {
-    "SET_CANDIES": setCandies
+    "SET_CANDIES" : setCandies,
+    "SET_CANDIES_AFTER_SELECT" : setCandiesAfterSelect
 };
 
 function reducer(state:any, action:any){

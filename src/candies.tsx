@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface ICandiesProps {
-
+    candies:any[]
 }
 
 class Candies extends React.PureComponent<ICandiesProps>{
@@ -10,9 +10,19 @@ class Candies extends React.PureComponent<ICandiesProps>{
     }
 
     render(){
+        const list = this.props.candies.map((candy, idx)=>{
+            return (
+                <div key={idx}>
+                    <div>{candy.candyName}</div>
+                    <div>price : {candy.price}$</div>
+                    <div>{idx+1}</div>
+                </div>
+            )
+        });
+
         return(
             <div>
-                d
+                <ul>{list}</ul>
             </div>
         )
     }
