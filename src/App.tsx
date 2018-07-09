@@ -39,10 +39,8 @@ class App extends React.PureComponent <IAppProps, IAppState>{
   public render() {
     return (
       <div className="App">
-        <div>
-            <SelectCandy onSelect={this.onSelect}/>
-            <Candies candies={this.props.candies}/>
-        </div>
+        <SelectCandy onSelect={this.onSelect}/>
+        <Candies candies={this.props.candies}/>
       </div>
     );
   }
